@@ -619,19 +619,13 @@ jobs:
           draft: false
           prerelease: ${{ env.IS_PRERELEASE }}
           generate_release_notes: true
+
+      - uses: d1ceward/draft-assets-release-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           files: |
-            deploy/selfhost/docker-compose.yml
             deploy/selfhost/variables.env
+            deploy/selfhost/docker-compose.yml
+            deploy/selfhost/build.yml
             deploy/selfhost/install.sh
-
-      # - name: Upload Release artifacts
-      #   id: upload-release-asset
-      #   uses: actions/upload-release-asset@v1.0.2
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-      #     asset_path: deploy/cli-install/Caddyfile
-      #     asset_name: Caddyfile
-      #     asset_content_type: text/plain
-
+            deploy/selfhost/restore.sh
