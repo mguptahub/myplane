@@ -603,6 +603,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          path: code
+
 
       - name: Create Release
         id: create_release
@@ -617,10 +620,10 @@ jobs:
           prerelease: ${{ env.IS_PRERELEASE }}
           generate_release_notes: false
           files: |
-            deploy/cli-install/variables.env
-            deploy/cli-install/Caddyfile
-            deploy/cli-install/docker-compose.yml
-            deploy/cli-install/docker-compose-caddy.yml
+            ./deploy/cli-install/variables.env
+            ./deploy/cli-install/Caddyfile
+            ./deploy/cli-install/docker-compose.yml
+            ./deploy/cli-install/docker-compose-caddy.yml
 
       # - name: Upload Release artifacts
       #   id: upload-release-asset
