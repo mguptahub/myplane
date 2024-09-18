@@ -610,7 +610,7 @@ jobs:
       - name: Create Release
         id: create_release
         # uses: actions/create-release@v1.1.4
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v2.0.8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
@@ -619,13 +619,5 @@ jobs:
           draft: false
           prerelease: ${{ env.IS_PRERELEASE }}
           generate_release_notes: true
-
-      - uses: d1ceward/draft-assets-release-action@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             deploy/selfhost/variables.env
-            deploy/selfhost/docker-compose.yml
-            deploy/selfhost/build.yml
-            deploy/selfhost/install.sh
-            deploy/selfhost/restore.sh
