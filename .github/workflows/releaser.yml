@@ -603,21 +603,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          path: code
 
+      - name: test-step
+        run: |
+          echo $pwd
+          ls -al
 
-      - name: Create Release
-        id: create_release
-        # uses: actions/create-release@v1.1.4
-        uses: softprops/action-gh-release@v2.0.8
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ env.REL_VERSION }}
-          name: ${{ env.REL_VERSION }}
-          draft: false
-          prerelease: ${{ env.IS_PRERELEASE }}
-          generate_release_notes: true
-          files: |
-            deploy/selfhost/variables.env
+      # - name: Create Release
+      #   id: create_release
+      #   # uses: actions/create-release@v1.1.4
+      #   uses: softprops/action-gh-release@v2.0.8
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      #   with:
+      #     tag_name: ${{ env.REL_VERSION }}
+      #     name: ${{ env.REL_VERSION }}
+      #     draft: false
+      #     prerelease: ${{ env.IS_PRERELEASE }}
+      #     generate_release_notes: true
