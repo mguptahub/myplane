@@ -604,13 +604,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Archive Release
-        uses: thedoctor0/zip-release@0.7.5
-        with:
-          type: 'zip'
-          filename: 'source-code.zip'
-          exclusions: '*.git* /*node_modules/* .editorconfig'
-      
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.1.4
@@ -618,7 +611,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
           tag_name: ${{ env.REL_VERSION }}
-          release_name: Release ${{ env.REL_VERSION }}
+          release_name: ${{ env.REL_VERSION }}
           draft: false
           prerelease: ${{ env.IS_PRERELEASE }}
 
